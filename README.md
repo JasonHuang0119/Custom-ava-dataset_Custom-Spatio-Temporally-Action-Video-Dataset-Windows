@@ -2,7 +2,7 @@
 Custom ava dataset, Multi-Person Video Dataset Annotation Method of Spatio-Temporally Actions <br>
 自定義ava數據集，多人視頻的時空動作數據集標註方法 使用到 Windows 系統上
 
-我的論文在 arXiv::A Multi-Person Video Dataset Annotation Method of Spatio-Temporally Actions
+
 
 AVA 論文：https://arxiv.org/pdf/1705.08421.pdf
 
@@ -123,6 +123,7 @@ cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Vid
 pip install -r requirements.
 pip install opencv-python-headless==4.1.2.30
 
+# 以下內容 windows 系統可以不用做 會幫你安裝在使用者環境下 這是安裝 yolo 的一種文檔
 wget https://github.com/ultralytics/yolov5/releases/download/v6.1/yolov5s.pt -O C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset\yolovDeepsort\yolov5\yolov5s.pt 
 mkdir -p /root/.config/Ultralytics/
 wget  https://ultralytics.com/assets/Arial.ttf -O /root/.config/Ultralytics/Arial.ttf
