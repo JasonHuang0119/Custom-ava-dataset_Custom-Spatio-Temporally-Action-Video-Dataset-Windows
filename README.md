@@ -35,7 +35,7 @@ Instance mirroring selection：Pytorch 1.8.0，python 3.8，CUDA 11.1.1 <br>
 为了让项目可以快速下载，我将项目同步到了码云：[https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git](https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git)
 ```python
 cd /home
-git clone https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git
+git clone https://github.com/JasonHuang0119/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows.git
 
 ```
 
@@ -48,7 +48,7 @@ https://s3.amazonaws.com/ava-dataset/trainval/2DUITARAsWQ.mp4
 Execute the following code on the AI platform:<br>
 在AI平台执行：
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset/videos
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 wget https://s3.amazonaws.com/ava-dataset/trainval/2DUITARAsWQ.mp4 -O ./1.mp4
 ```
 ![image](https://img-blog.csdnimg.cn/1f996811ec164f08b21f04e42220601a.png)
@@ -61,10 +61,10 @@ conda install x264 ffmpeg -c conda-forge -y
 ```
 ## 4.2 video cropping 视频裁剪
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset:<br>
-在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset下执行：
+在C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset下执行：
 
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 sh cut_video.sh
 ```
 ![image](https://img-blog.csdnimg.cn/8e9b191bb72e41ee96b508ad0230a4e5.png)
@@ -72,11 +72,11 @@ sh cut_video.sh
 Referring to the ava dataset, crop 30 frames per second <br>
 参考ava数据集，每秒裁剪30帧<br>
 
-Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset:<br>
-在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset 下执行：
+Execute the code under C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset:<br>
+在C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset 下执行：
 
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 bash cut_frames.sh 
 ```
 ![image](https://img-blog.csdnimg.cn/ff14789c0a3743e584ea11de15dfc517.png)
@@ -90,10 +90,10 @@ It should be noted that not all images need to be detected and labeled. In the 1
 需要注意的是，并不是，所有图片都需要检测与标注，在10秒的视频中，检测标注：x_000001.jpg、x_000031.jpg、x_000061.jpg、x_000091.jpg、x_0000121jpg、x_000151.jpg、x_000181.jpg、x_000211.jpg、x_000241.jpg、x_000271.jpg、x_000301.jpg。<br>
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset:<br>
-在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset 下执行：
+在 C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset 下执行：
 
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset 
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 python choose_frames_all.py 10 0
 ```
 In the above code, 10 represents the length of the video, and 0 represents the start from the 0th second.<br>
@@ -105,9 +105,9 @@ The consolidate and downscale frames in 4.4 is for the detection of yolov5, and 
 4.4的整合与缩减是为了yolov5的检测，这里的不整合的缩减是为了VIA的标注。<br>
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset:<br>
-在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset 下执行：
+在 C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset 下执行：
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset 
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 python choose_frames.py 10 0
 ```
 ![image](https://img-blog.csdnimg.cn/f5501f08cd7941c692b702f0af25f985.png)
@@ -119,11 +119,11 @@ python choose_frames.py 10 0
 run the following code<br>
 运行以下代码：<br>
 ```
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort
-pip install -r requirements.txt
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\yolovDeepsort
+pip install -r requirements.
 pip install opencv-python-headless==4.1.2.30
 
-wget https://github.com/ultralytics/yolov5/releases/download/v6.1/yolov5s.pt -O /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/yolov5/yolov5s.pt 
+wget https://github.com/ultralytics/yolov5/releases/download/v6.1/yolov5s.pt -O C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset\yolovDeepsort\yolov5\yolov5s.pt 
 mkdir -p /root/.config/Ultralytics/
 wget  https://ultralytics.com/assets/Arial.ttf -O /root/.config/Ultralytics/Arial.ttf
 ```
@@ -134,7 +134,7 @@ The reason for using deep sort: In preparation for generating [train/val].csv, d
 
 
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset\yolovDeepsort
 python ./yolov5/detect.py --source ../Dataset/choose_frames_all/ --save-txt --save-conf 
 ```
 The result is stored in: /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/yolov5/runs/detect/exp <br>
@@ -145,10 +145,10 @@ The result is stored in: /home/Custom-ava-dataset_Custom-Spatio-Temporally-Actio
 # 6 Generate dense_proposals_train.pkl
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork：
-
+這邊 exp 是看使用 yolo detect.py 後產生的資料夾 請用當下產生的那個資料夾 Ex: exp7 下面請幫我改成 exp7
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork
-python dense_proposals_train.py ../yolov5/runs/detect/exp/labels ./dense_proposals_train.pkl show
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\yolovDeepsort\mywork
+python dense_proposals_train.py ../yolov5/runs/detect/exp7/labels ./dense_proposals_train.pkl show
 ```
 
 # 7 import via 导入via
@@ -158,7 +158,7 @@ The choose_frames folder under /home/Custom-ava-dataset_Custom-Spatio-Temporally
 /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset 下的 choose_frames 文件夹中包含10秒视频中11张图片，但是在最后生成的标注文件，不包含前2张图片和后2张图片。所以需要创建一个choose_frames_middle文件夹，存放不含前2张图片与后2张图片的文件夹。<br>
 
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset/
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 python choose_frames_middle.py
 ```
 ![image](https://img-blog.csdnimg.cn/db8205ef31f0417194a3f40d9bd8caf2.png)
@@ -171,7 +171,7 @@ The custom action is in: /home/Custom-ava-dataset_Custom-Spatio-Temporally-Actio
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork/:<br>
 在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork/下执行:<br>
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork/
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset\yolovDeepsort\mywork\
 python dense_proposals_train_to_via.py ./dense_proposals_train.pkl ../../Dataset/choose_frames_middle/
 ```
 The generated annotation files are saved in: /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/choose_frames_middle<br>
@@ -185,10 +185,10 @@ There is a default value when labeling, which will affect our labeling and needs
 I have tried many times and want to remove the default value in the annotation option when generating the via annotation file, but it is still not implemented. Then after the generation, directly operate the via json file and remove the default value.<br>
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/:<br>
-在：/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/下运行<br>
+在：C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset下运行<br>
 
 ```python
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 python chang_via_json.py 
 ```
 ![image](https://img-blog.csdnimg.cn/de6866f0ef484a3ea909ce5bda598857.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_15,color_FFFFFF,t_70,g_se,x_16)
@@ -205,7 +205,7 @@ apt-get update
 apt-get install zip
 apt-get install unzip
 
-cd /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset
+cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 zip -r choose_frames_middle.zip choose_frames_middle
 ```
 Download choose_frames_middle.zip<br>
@@ -283,7 +283,7 @@ It should be noted here that I named the labeled file: video_name_finish.json, s
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset: <br>
 在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset中执行：<br>
 ```python
-cd  /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset/
+cd  C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 python json_extract.py
 ```
 It will be generated under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset/:<br>
@@ -297,7 +297,7 @@ train_without_personID.csv<br>
 
 執行 
 ```python
-cd  /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset/
+cd  C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 python sort_ava_name.py
 ```
 
