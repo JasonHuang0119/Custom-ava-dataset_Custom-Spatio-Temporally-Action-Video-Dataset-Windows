@@ -1,28 +1,31 @@
 # Custom ava dataset, Custom Spatio Temporally Action Video Dataset for Windows
 Custom ava dataset, Multi-Person Video Dataset Annotation Method of Spatio-Temporally Actions <br>
-自定义ava数据集，多人视频的时空动作数据集标注方法 原先使用在 linux 系統上，將其導入到 Windows 環境上 <br>
+自定義ava數據集，多人視頻的時空動作數據集標註方法 使用到 Windows 系統上
 
-My paper in arxiv::[A Multi-Person Video Dataset Annotation Method of
-Spatio-Temporally Actions](https://arxiv.org/pdf/2204.10160.pdf)<br>
+我的論文在 arXiv::A Multi-Person Video Dataset Annotation Method of Spatio-Temporally Actions
 
-AVA paper：[https://arxiv.org/pdf/1705.08421.pdf](https://arxiv.org/pdf/1705.08421.pdf) <br>
+AVA 論文：https://arxiv.org/pdf/1705.08421.pdf
 
-下面是我在CSDN、知乎、B站的同步内容：<br>
-CSDN：[https://blog.csdn.net/WhiffeYF/article/details/124358725](https://blog.csdn.net/WhiffeYF/article/details/124358725)<br>
-知乎：[https://zhuanlan.zhihu.com/p/503031957](https://zhuanlan.zhihu.com/p/503031957 ) <br>
-B站：[https://www.bilibili.com/video/BV1j3411M7Ba/](https://www.bilibili.com/video/BV1j3411M7Ba/)<br>
+下面是我在 CSDN、知乎、B站的同步內容：
 
-# 1 Dataset‘s folder structure 数据集文件结构
+CSDN：https://blog.csdn.net/WhiffeYF/article/details/124358725
+
+知乎：https://zhuanlan.zhihu.com/p/503031957
+
+B站：https://www.bilibili.com/video/BV1j3411M7Ba/
+
+# 1 Dataset's folder structure 數據集文件結構
 
 ![image](https://github.com/Whiffe/Custom-ava-dataset_Multi-Person-Video-Dataset-Annotation-Method-of-Spatio-Temporally-Actions/blob/95307633663fa3103a46de75220aabf1174013ca/images/DatasetFolderStructure.png)
 
-# 2 AI platform and project download.  AI平台与项目下载
+# 2 AI platform and project download. AI平台與項目下載
 ## AI platform. AI 平台
 The AI platform I use is: [https://cloud.videojj.com/auth/register?inviter=18452&activityChannel=student_invite](https://cloud.videojj.com/auth/register?inviter=18452&activityChannel=student_invite) <br>
 我使用的AI平台：[https://cloud.videojj.com/auth/register?inviter=18452&activityChannel=student_invite](https://cloud.videojj.com/auth/register?inviter=18452&activityChannel=student_invite)
 
-The following operations are all done on this platform.<br>
-以下的操作均在该平台的基础上完成。
+以下的操作均在該平台的基礎上完成。
+
+實例鏡像選擇：Pytorch 1.8.0，python 3.8，CUDA 11.1.1
 
 Instance mirroring selection：Pytorch 1.8.0，python 3.8，CUDA 11.1.1 <br>
 实例镜像选择：Pytorch 1.8.0，python 3.8，CUDA 11.1.1
@@ -288,7 +291,16 @@ train_without_personID.csv <br>
 会在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset/下生成：<br>
 train_without_personID.csv<br>
 ![image](https://img-blog.csdnimg.cn/c67fa6d19d3643acbcb2be835c121f85.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_20,color_FFFFFF,t_70,g_se,x_16)
-  
+
+## 8.4 Sort_ava_name  train_without_person_id.csv 需要進行微調
+因為 train_without_person_id.csv 裡面順序是亂序，我們是用序列型資料要完整的從影片開始到結束，所以需要時間排序正確
+
+執行 
+```python
+cd  /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset/
+python sort_ava_name.py
+```
+
 # 9 deep sort
 ## 9.1 dense_proposals_train_deepsort.py
 
