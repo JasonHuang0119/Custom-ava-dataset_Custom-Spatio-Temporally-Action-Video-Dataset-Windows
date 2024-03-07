@@ -1,6 +1,6 @@
-# Custom ava dataset, Custom Spatio Temporally Action Video Dataset
+# Custom ava dataset, Custom Spatio Temporally Action Video Dataset for Windows
 Custom ava dataset, Multi-Person Video Dataset Annotation Method of Spatio-Temporally Actions <br>
-自定义ava数据集，多人视频的时空动作数据集标注方法 <br>
+自定义ava数据集，多人视频的时空动作数据集标注方法 原先使用在 linux 系統上，將其導入到 Windows 環境上 <br>
 
 My paper in arxiv::[A Multi-Person Video Dataset Annotation Method of
 Spatio-Temporally Actions](https://arxiv.org/pdf/2204.10160.pdf)<br>
