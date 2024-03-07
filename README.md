@@ -14,6 +14,8 @@ CSDN：https://blog.csdn.net/WhiffeYF/article/details/124358725
 
 B站：https://www.bilibili.com/video/BV1j3411M7Ba/
 
+# 下面 1、2、3 部分請自己參考，在自己電腦環境上可以跳過到第 4 部份，另外建議安裝 Anaconda 的虛擬環境再進行安裝
+
 # 1 Dataset's folder structure 數據集文件結構
 
 ![image](https://github.com/Whiffe/Custom-ava-dataset_Multi-Person-Video-Dataset-Annotation-Method-of-Spatio-Temporally-Actions/blob/95307633663fa3103a46de75220aabf1174013ca/images/DatasetFolderStructure.png)
