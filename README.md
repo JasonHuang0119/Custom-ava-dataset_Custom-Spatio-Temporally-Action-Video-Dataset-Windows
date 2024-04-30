@@ -1,8 +1,10 @@
-# Custom ava dataset, Custom Spatio Temporally Action Video Dataset for Windows
+# 請標記人員, 可以直接跳到第 4 步驟開始, 從第 4 步驟做到第 8.4 步驟做完即可
+
+## Custom ava dataset, Custom Spatio Temporally Action Video Dataset for Windows
 Custom ava dataset, Multi-Person Video Dataset Annotation Method of Spatio-Temporally Actions <br>
 自定義ava數據集，多人視頻的時空動作數據集標註方法 使用到 Windows 系統上
 
-# 請標記人員, 可以直接跳到第4步驟開始
+
 
 
 AVA 論文：https://arxiv.org/pdf/1705.08421.pdf
