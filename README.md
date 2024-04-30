@@ -65,7 +65,7 @@ Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-
 
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
-sh cut_video.bat
+cut_video.bat
 ```
 ![image](https://img-blog.csdnimg.cn/8e9b191bb72e41ee96b508ad0230a4e5.png)
 ## 4.3 video frame 视频抽帧
@@ -77,7 +77,7 @@ Execute the code under C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-T
 
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
-bash cut_frames.bat 
+cut_frames.bat 
 ```
 ![image](https://img-blog.csdnimg.cn/ff14789c0a3743e584ea11de15dfc517.png)
 ![image](https://img-blog.csdnimg.cn/334197c4599e4a12ab594dd8133730a4.png)
