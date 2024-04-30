@@ -5,12 +5,6 @@ Custom ava dataset, Multi-Person Video Dataset Annotation Method of Spatio-Tempo
 自定義ava數據集，多人視頻的時空動作數據集標註方法 使用到 Windows 系統上
 
 
-
-
-AVA 論文：https://arxiv.org/pdf/1705.08421.pdf
-
-下面是我在 CSDN、知乎、B站的同步內容：
-
 CSDN：https://blog.csdn.net/WhiffeYF/article/details/124358725
 
 知乎：https://zhuanlan.zhihu.com/p/503031957
@@ -57,6 +51,7 @@ cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Vid
 wget https://s3.amazonaws.com/ava-dataset/trainval/2DUITARAsWQ.mp4 -O ./1.mp4
 ```
 ![image](https://img-blog.csdnimg.cn/1f996811ec164f08b21f04e42220601a.png)
+
 # 4 Video cropping and frame extraction 视频裁剪与抽帧
 ## 4.1 install ffmpeg 安装ffmpeg
 We use ffmpeg for video cropping and frame extraction, so install ffmpeg first<br>
