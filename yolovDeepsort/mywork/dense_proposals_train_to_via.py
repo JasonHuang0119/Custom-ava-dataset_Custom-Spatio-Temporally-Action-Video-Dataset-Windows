@@ -17,14 +17,24 @@ f = open(avaMin_dense_proposals_path,'rb')
 info = pickle.load(f, encoding='iso-8859-1') 
 
 
-# 這邊是標記框的動作勾選選項
-attributes_dict = {'1':dict(aname='cow', type=2, options={'0':'walk', '1':'stand', '2': 'lie down', '3':'eat', '4':'drink', '5':'mounting' },default_option_id="", anchor_id = 'FILE1_Z0_XY1'),}
 
+# attributes_dict = {'1':dict(aname='head', type=2, options={'0':'talk',
+#                    '1':'bow'},default_option_id="", anchor_id = 'FILE1_Z0_XY1'),
+
+#                    '2': dict(aname='body', type=2, options={'0':'stand',
+#                    '1':'sit', '2':'walk'}, default_option_id="", anchor_id='FILE1_Z0_XY1'),
+                   
+#                   '3':dict(aname='limbs', type=2, options={'0':'hand up',
+#                    '1':'catch'},default_option_id="", anchor_id = 'FILE1_Z0_XY1'),
+#                   }
+
+attributes_dict = {'1': dict(aname='cow', type=2, options={'0':'walk', '1':'stand', '2':'lie down', '3':'feeding','4':'mount','5':'chase','6':'bully','7':'shake head'}, default_option_id="", anchor_id='FILE1_Z0_XY1'),}
 #len_x与循环的作用主要是获取每个视频下视频帧的数量
 dirname = ''
 len_x = {}
-for i in info:
+for i in info:	
     temp_dirname = i.split(',')[0]
+    #print(i)
     if dirname == temp_dirname:
         #正在循环一个视频文件里的东西
         len_x[dirname] = len_x[dirname] + 1
@@ -34,15 +44,20 @@ for i in info:
         len_x[dirname] = 1
 
 dirname = ''
+image_id = 0
 for i in info:
     temp_dirname = i.split(',')[0]
+    #print(temp_dirname)
+    #print(temp_dirname)
+    #print(dirname)
     if dirname == temp_dirname:
         #正在循环一个视频文件里的东西
-    
         #图片ID从1开始计算
         image_id = image_id + 1
+        #print(image_id)
         files_img_num = int(i.split(',')[1])
-        
+        print(files_img_num)
+        #print(image_id)
         # 如果当前出现 files_img_num - 1 与 image_id 不相等的情况
         # 那就代表当前 image_id对应的图片中没有人
         # 那么via的标注记为空
@@ -63,10 +78,10 @@ for i in info:
         
         for vid,result in enumerate(info[i],1):
             xyxy = result
-            xyxy[0] = img_W*xyxy[0]
-            xyxy[2] = img_W*xyxy[2]
-            xyxy[1] = img_H*xyxy[1]
-            xyxy[3] = img_H*xyxy[3]
+            xyxy[0] = round(img_W*xyxy[0],4)
+            xyxy[2] = round(img_W*xyxy[2],4)
+            xyxy[1] = round(img_H*xyxy[1],4)
+            xyxy[3] = round(img_H*xyxy[3],4)
             temp_w = xyxy[2] - xyxy[0]
             temp_h = xyxy[3] - xyxy[1]
             
@@ -79,7 +94,7 @@ for i in info:
         via3.dumpFiles(files_dict)
         via3.dumpMetedatas(metadatas_dict)
         
-        print("OK ",image_id,"   ",num_images)
+       # print("OK ",image_id,"   ",num_images)
         if image_id == num_images:
             views_dict = {}
             for i, vid in enumerate(vid_list,1):
@@ -93,7 +108,7 @@ for i in info:
         #但是视频的标注信息长度仍然小于视频实际图片长度
         #即视频图片最后几张都是没有人，导致视频标注信息最后几张没有
         #那么就执行下面的语句，给最后几张图片添加空的标注信息
-        print("image_id",image_id," len_x[dirname]",len_x[dirname]," num_images",num_images)
+        #print("image_id",image_id," len_x[dirname]",len_x[dirname]," num_images",num_images)
         if image_id == len_x[dirname] and image_id < num_images:
             while image_id < num_images:
                 image_id = image_id + 1
@@ -110,7 +125,7 @@ for i in info:
     else:
         #进入下一个视频文件
         dirname = temp_dirname
-        print("dirname",dirname)
+        #print("dirname",dirname)
         
         #为每一个视频文件创建一个via的json文件
         temp_json_path = json_path + dirname + '/' + dirname + '_proposal.json'
@@ -142,10 +157,10 @@ for i in info:
         
         for vid,result in enumerate(info[i],1):
             xyxy = result
-            xyxy[0] = img_W*xyxy[0]
-            xyxy[2] = img_W*xyxy[2]
-            xyxy[1] = img_H*xyxy[1]
-            xyxy[3] = img_H*xyxy[3]
+            xyxy[0] = round(img_W*xyxy[0],4)
+            xyxy[2] = round(img_W*xyxy[2],4)
+            xyxy[1] = round(img_H*xyxy[1],4)
+            xyxy[3] = round(img_H*xyxy[3],4)
             temp_w = xyxy[2] - xyxy[0]
             temp_h = xyxy[3] - xyxy[1]
             
