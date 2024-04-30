@@ -15,13 +15,13 @@ CSDN：https://blog.csdn.net/WhiffeYF/article/details/124358725
 
 B站：https://www.bilibili.com/video/BV1j3411M7Ba/
 
-# 下面 1、2、3 部分請自己參考，在自己電腦環境上可以跳過到第 4 部份，另外建議安裝 Anaconda 的虛擬環境再進行安裝
+### 下面 1、2、3 部分請自己參考，在自己電腦環境上可以跳過到第 4 部份，另外建議安裝 Anaconda 的虛擬環境再進行安裝
 
-# 1 Dataset's folder structure 數據集文件結構
+## 1 Dataset's folder structure 數據集文件結構
 
 ![image](https://github.com/Whiffe/Custom-ava-dataset_Multi-Person-Video-Dataset-Annotation-Method-of-Spatio-Temporally-Actions/blob/95307633663fa3103a46de75220aabf1174013ca/images/DatasetFolderStructure.png)
 
-# 2 AI platform and project download. AI平台與項目下載
+## 2 AI platform and project download. AI平台與項目下載
 ## AI platform. AI 平台
 The AI platform I use is: [https://cloud.videojj.com/auth/register?inviter=18452&activityChannel=student_invite](https://cloud.videojj.com/auth/register?inviter=18452&activityChannel=student_invite) <br>
 我使用的AI平台：[https://cloud.videojj.com/auth/register?inviter=18452&activityChannel=student_invite](https://cloud.videojj.com/auth/register?inviter=18452&activityChannel=student_invite)
@@ -42,7 +42,7 @@ git clone https://github.com/JasonHuang0119/Custom-ava-dataset_Custom-Spatio-Tem
 
 ```
 
-# 3 数据集视频准备
+## 3 数据集视频准备
 The video is 1 randomly selected from the AVA dataset, and I will crop 3 10-second segments from this video:<br>
 视频是从AVA数据集中随机选择了1个，我会从这个视频中裁剪出3个10秒的片段：
 ```python
