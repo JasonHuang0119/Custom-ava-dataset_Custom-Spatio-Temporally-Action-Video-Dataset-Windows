@@ -97,7 +97,7 @@ Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-
 
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
-python choose_frames_all.py 10 0
+python choose_frames_all.py 36 0
 ```
 In the above code, 10 represents the length of the video, and 0 represents the start from the 0th second.<br>
 其中10代表视频长度，0代表从第0秒开始 <br>
@@ -111,7 +111,7 @@ Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-
 在 C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset 下执行：
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
-python choose_frames.py 10 0
+python choose_frames.py 36 0
 ```
 ![image](https://img-blog.csdnimg.cn/f5501f08cd7941c692b702f0af25f985.png)
 ![image](https://img-blog.csdnimg.cn/9041d1ad34ca435ebd67c2f3e1bce3c8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_15,color_FFFFFF,t_70,g_se,x_16)
