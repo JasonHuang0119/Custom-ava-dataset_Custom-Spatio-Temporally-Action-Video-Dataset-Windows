@@ -124,7 +124,7 @@ pip install -r requirements.
 pip install opencv-python-headless==4.1.2.30
 
 # 以下內容 windows 系統可以不用做 會幫你安裝在使用者環境下 這是安裝 yolo 的一種文檔
-wget https://github.com/ultralytics/yolov5/releases/download/v6.1/yolov5s.pt -O C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset\yolovDeepsort\yolov5\yolov5s.pt 
+wget https://github.com/ultralytics/yolov5/releases/download/v6.1/yolov5s.pt -O C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\yolovDeepsort\yolov5\yolov5s.pt 
 mkdir -p /root/.config/Ultralytics/
 wget  https://ultralytics.com/assets/Arial.ttf -O /root/.config/Ultralytics/Arial.ttf
 ```
