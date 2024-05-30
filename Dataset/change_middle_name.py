@@ -6,7 +6,7 @@ root_dir = 'choose_frames_middle (copy)'
 
 def get_new_prefix(folder):
     if not folder.startswith('Jia'):
-        return f'Jia{folder}_'
+        return f'Jia_'
     return ''
 
 # 遍歷根資料夾中的每個子資料夾
