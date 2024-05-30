@@ -2,6 +2,7 @@ import os
 import json
 
 root_dir = 'choose_frames_middle (copy)'
+# 修改 choose_frames_middle 裡面的 json ,jpg 檔案名稱, 把它從 1_000061.jpg 轉變成 Jia_1_000061.jpg
 
 def get_new_prefix(folder):
     if not folder.startswith('Jia'):
