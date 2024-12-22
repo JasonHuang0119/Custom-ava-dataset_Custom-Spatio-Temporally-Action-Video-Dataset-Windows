@@ -2,6 +2,13 @@ import sys
 import os
 import json
 import pickle
+import re
+
+def extract_numbers(filename):
+    numbers = re.findall(r'\d+', filename)
+    return tuple(map(int, numbers))
+
+
 
 #传参 labelPath是yolov5检测结果的位置，需要获取0（0代表人）的四个坐标值，还需要检测概率
 # ../yolov5/runs/detect/exp/labels
@@ -22,10 +29,10 @@ for root, dirs, files in os.walk(labelPath):
     lenFile = len(files)
     if root == labelPath:
         #排序，防止10排在1的前面
-        files.sort(key=lambda arr: (int(arr[:-7]), int(arr[3:-4])))
+        files.sort(key=extract_numbers)
         for name in files:
-            temp_file_name = name.split("_")[0]
-            temp_video_ID = name.split("_")[1].split('.')[0]
+            temp_file_name = '_'.join(name.split('_')[:-1])  # 獲取除了最後一個數字之外的部分
+            temp_video_ID = name.split('_')[-1].split('.')[0]  # 獲取最後一個數字
             temp_video_ID = int(temp_video_ID)
             temp_video_ID = str(int((temp_video_ID-1)/30))
             temp_video_ID = temp_video_ID.zfill(4)
@@ -42,9 +49,9 @@ for root, dirs, files in os.walk(labelPath):
             temp_data_txt = temp_txt.readlines() 
             results = []
             for i in temp_data_txt:
-                # 只要人的信息
+                # 只要非人的信息
                 j = i.split(' ')
-                if j[0]=='0':
+                if j[0]!='0':
             
                     # 由于yolov5的检测结果是 xywh
                     # 要将xywh转化成xyxy
