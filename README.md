@@ -299,7 +299,7 @@ train_without_personID.csv<br>
 執行 
 ```python
 cd  C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
-python sorted_csv_name.py
+python sorted_ava_name.py
 ```
 
   
