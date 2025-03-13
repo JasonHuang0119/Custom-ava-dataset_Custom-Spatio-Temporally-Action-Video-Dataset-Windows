@@ -27,50 +27,50 @@ The AI platform I use is: [https://cloud.videojj.com/auth/register?inviter=18452
 實例鏡像選擇：Pytorch 1.8.0，python 3.8，CUDA 11.1.1
 
 Instance mirroring selection：Pytorch 1.8.0，python 3.8，CUDA 11.1.1 <br>
-实例镜像选择：Pytorch 1.8.0，python 3.8，CUDA 11.1.1
+安裝環境選擇：Pytorch 1.8.0，python 3.8，CUDA 11.1.1
 ![image](https://img-blog.csdnimg.cn/c6544a25f8a748c88ff4451cd1fceb39.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA6K6h566X5py66KeG6KeJLeadqOW4hg==,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-## 2.2 project download. AI平台与项目下载
-为了让项目可以快速下载，我将项目同步到了码云：[https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git](https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git)
+## 2.2 project download. AI平台與項目下載
+為了讓項目快速下載，我將項目同步到了碼雲：[https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git](https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git)
 ```python
 cd /home
 git clone https://github.com/JasonHuang0119/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows.git
 
 ```
 
-## 3 数据集视频准备
+## 3 資料集影片收集
 The video is 1 randomly selected from the AVA dataset, and I will crop 3 10-second segments from this video:<br>
-视频是从AVA数据集中随机选择了1个，我会从这个视频中裁剪出3个10秒的片段：
+影片是從AVA資料集中隨機選擇了1個，我會從這個影片中裁剪出3個10秒的片段：
 ```python
 https://s3.amazonaws.com/ava-dataset/trainval/2DUITARAsWQ.mp4
 ```
 Execute the following code on the AI platform:<br>
-在AI平台执行：
+在AI平台執行：
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 wget https://s3.amazonaws.com/ava-dataset/trainval/2DUITARAsWQ.mp4 -O ./1.mp4
 ```
 ![image](https://img-blog.csdnimg.cn/1f996811ec164f08b21f04e42220601a.png)
 
-# 4 Video cropping and frame extraction 视频裁剪与抽帧
-## 4.1 install ffmpeg 安装ffmpeg
+# 4 Video cropping and frame extraction 影片裁剪與抽幀
+## 4.1 install ffmpeg 安裝ffmpeg
 We use ffmpeg for video cropping and frame extraction, so install ffmpeg first<br>
-本文使用ffmpeg进行视频裁剪与抽帧，所以先安装ffmpeg
+本文使用ffmpeg進行影片裁切與抽幀，所以先安裝ffmpeg
 ```python
 conda install x264 ffmpeg -c conda-forge -y
 ```
-## 4.2 video cropping 视频裁剪
+## 4.2 video cropping 影片裁剪
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset:<br>
-在C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset下执行：
+在C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset下執行：
 
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 cut_videos.bat
 ```
 ![image](https://img-blog.csdnimg.cn/8e9b191bb72e41ee96b508ad0230a4e5.png)
-## 4.3 video frame 视频抽帧
+## 4.3 video frame 影片抽幀
 Referring to the ava dataset, crop 30 frames per second <br>
-参考ava数据集，每秒裁剪30帧<br>
+参考ava数据集，每秒裁剪 30 幀<br>
 
 Execute the code under C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset:<br>
 在C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset 下执行：
@@ -82,12 +82,13 @@ cut_frames.bat
 ![image](https://img-blog.csdnimg.cn/ff14789c0a3743e584ea11de15dfc517.png)
 ![image](https://img-blog.csdnimg.cn/334197c4599e4a12ab594dd8133730a4.png)
 
-## 4.4 Consolidate and downscale frames 整合与缩减帧
+## 4.4 Consolidate and downscale frames 整合與缩减幀
 The structure of the frames folder generated in Section 4.3 will be inconvenient in the subsequent yolov5 detection, so I put all the pictures in a folder (choose_frames_all) in the following way.<br>
-4.3节中产生的frames文件夹的结构，在后续yolov5检测时会出现不方便，所以我采用下面的方式，将所有的图片放在了一个文件夹（choose_frames_all）中。<br>
+4.3 節中產生的frames資料夾的結構，在後續yolov5檢測時會出現不方便，所以我採用下面的方式，將所有的圖片放在了一個資料夾（choose_frames_all）中。<br>
 
-It should be noted that not all images need to be detected and labeled. In the 10-second video, the detection labels are: x_000001.jpg, x_000031.jpg, x_000061.jpg, x_000091.jpg, x_0000121jpg, x_000151.jpg, x_000181. jpg, x_000211.jpg, x_000241.jpg, x_000271.jpg, x_000301.jpg.<br>
-需要注意的是，并不是，所有图片都需要检测与标注，在10秒的视频中，检测标注：x_000001.jpg、x_000031.jpg、x_000061.jpg、x_000091.jpg、x_0000121jpg、x_000151.jpg、x_000181.jpg、x_000211.jpg、x_000241.jpg、x_000271.jpg、x_000301.jpg。<br>
+It should be noted that not all images need to be detected and labeled. In the 16-second video, the detection labels are: x_000001.jpg, x_000031.jpg, x_000061.jpg, x_000091.jpg, x_0000121jpg, x_000151.jpg, x_000181. jpg, x_000211.jpg, x_000241.jpg, x_000271.jpg, x_000301.jpg.<br>
+
+要注意的是，並不是，所有圖片都需要偵測與標註，在16秒的影片中，偵測標註：x_000001.jpg、x_000031.jpg、x_000061.jpg、x_000091.jpg、x_0000121jpg、x_000151.jpg、x_000181.jpg、x_000211.jpg、x_000241.jpg、x_000271.jpg、x_000301.jpg、x_000331.jpg、x_000361.jpg、x_000391.jpg、x_000421.jpg、x_000451.jpg、x_000481.jpg。<br>
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset:<br>
 在 C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset 下执行：
@@ -96,13 +97,13 @@ Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
 python choose_frames_all.py 16 0
 ```
-In the above code, 10 represents the length of the video, and 0 represents the start from the 0th second.<br>
-其中10代表视频长度，0代表从第0秒开始 <br>
+In the above code, 16 represents the length of the video, and 0 represents the start from the 0th second.<br>
+其中 16 代表影片長度，0代表從第0秒開始 <br>
 ![image](https://img-blog.csdnimg.cn/8fbb68efa7ac407db1317b1e5d202753.png)
 
-## 4.5 Not consolidate and downscale frames 不整合的缩减帧
+## 4.5 Not consolidate and downscale frames 不整合的缩减幀。
 The consolidate and downscale frames in 4.4 is for the detection of yolov5, and not consolidate and downscale frames here is for the labeling of VIA.
-4.4的整合与缩减是为了yolov5的检测，这里的不整合的缩减是为了VIA的标注。<br>
+4.4 的整合與縮減是為了yolov5的偵測，這裡的不整合的縮減是為了VIA的標註。<br>
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset:<br>
 在 C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset 下执行：
@@ -113,11 +114,11 @@ python choose_frames.py 16 0
 ![image](https://img-blog.csdnimg.cn/f5501f08cd7941c692b702f0af25f985.png)
 ![image](https://img-blog.csdnimg.cn/9041d1ad34ca435ebd67c2f3e1bce3c8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_15,color_FFFFFF,t_70,g_se,x_16)
 
-# 5 yolov5 and deep sort installation. yolov5与deep sort 安装
+# 5 yolov5 and deep sort installation. yolov5與deep sort 安裝
 
 ##  5.1 Install 安装
 run the following code<br>
-运行以下代码：<br>
+運行以下程式碼：<br>
 ```
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\yolovDeepsort
 pip install -r requirements.
@@ -129,9 +130,9 @@ mkdir -p /root/.config/Ultralytics/
 wget  https://ultralytics.com/assets/Arial.ttf -O /root/.config/Ultralytics/Arial.ttf
 ```
 The reason for using deep sort: In preparation for generating [train/val].csv, dense_proposals_[train/val/test].pkl will not use the detection results of deep sort.<br>
-采用deep sort的原因：为生成[train/val].csv做准备，dense_proposals_[train/val/test].pkl不会用到deep sort的检测结果。<br>
+採用deep sort的原因：為產生[train/val].csv做準備，dense_proposals_[train/val/test].pkl不會用到deep sort的偵測結果。<br>
 
-## 5.2 Detect choose_frames_all 对choose_frames_all进行检测
+## 5.2 Detect choose_frames_all 對 choose_frames_all 進行檢測
 
 
 ```python
@@ -139,24 +140,24 @@ cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Vid
 python ./yolov5/detect.py --source ../Dataset/choose_frames_all/ --save-txt --save-conf 
 ```
 The result is stored in: /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/yolov5/runs/detect/exp <br>
-结果存储在：/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/yolov5/runs/detect/exp <br>
+结果儲存在：/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/yolov5/runs/detect/exp <br>
 
 ![image](https://img-blog.csdnimg.cn/f92b6d91cfb94eb0866ac37704f3d888.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_20,color_FFFFFF,t_70,g_se,x_16)
 
 # 6 Generate dense_proposals_train.pkl
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork：
-這邊 exp 是看使用 yolo detect.py 後產生的資料夾 請用當下產生的那個資料夾 Ex: exp7 下面請幫我改成 exp7
+這邊 exp 是看使用 yolo detect.py 後產生的資料夾 請用當下產生的那個資料夾，該資料夾位於 /home/jason/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/yolov5/runs/detect/exp7 <br> Ex: exp7 下面請幫我改成 exp7
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\yolovDeepsort\mywork
 python dense_proposals_train.py ../yolov5/runs/detect/exp7/labels ./dense_proposals_train.pkl show
 ```
 
-# 7 import via 导入via
+# 7 import via 將須標註圖片導入 via 線上標註網頁
 
 ## 7.1 choose_frames_all_middle
 The choose_frames folder under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset contains 11 pictures in the 10-second video, but the final generated annotation file does not contain the first 2 pictures and The last 2 pictures. So you need to create a choose_frames_middle folder to store the folders without the first 2 pictures and the last 2 pictures.<br>
-/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset 下的 choose_frames 文件夹中包含10秒视频中11张图片，但是在最后生成的标注文件，不包含前2张图片和后2张图片。所以需要创建一个choose_frames_middle文件夹，存放不含前2张图片与后2张图片的文件夹。<br>
+/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset 下的 choose_frames 文件夹中包含10秒视频中11张图片，但是在最后生成的标注文件，不包含前2张图片和后2张图片。所以需要创建一个choose_frames_middle文件夾，存放不含前2張圖片與後2張圖片的文件夾。<br>
 
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
@@ -164,29 +165,29 @@ python choose_frames_middle.py
 ```
 ![image](https://img-blog.csdnimg.cn/db8205ef31f0417194a3f40d9bd8caf2.png)
 
-## 7.2 Generate via annotation file 生成via标注文件
+## 7.2 Generate via annotation file 生成 via 標註文件
 自定义动作在：/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork/dense_proposals_train_to_via.py文件中，具体位置如下图：<br>
 The custom action is in: /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork/dense_proposals_train_to_via.py file, the specific location is as follows:<br>
 ![image](https://img-blog.csdnimg.cn/dc0220d520414c7e82d9fe66eb949e6c.png)
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork/:<br>
-在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork/下执行:<br>
+在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/yolovDeepsort/mywork/下執行:<br>
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\yolovDeepsort\mywork\
 python dense_proposals_train_to_via.py ./dense_proposals_train.pkl ../../Dataset/choose_frames_middle/
 ```
 The generated annotation files are saved in: /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/choose_frames_middle<br>
-生成的标注文件保存在：/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/choose_frames_middle中<br>
+產生的標註文件保存在：/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/choose_frames_middle中<br>
 ![image](https://img-blog.csdnimg.cn/0ad5591962b64fceb90f2a26a7fa98f1.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_15,color_FFFFFF,t_70,g_se,x_16)
 ## 7.3 Remove the default value of via 去掉via默认值
-标注时有默认值，这个会影响我们的标注，需要取消掉。<br>
+標註時有預設值，這個會影響我們的標註，需要取消掉。<br>
 There is a default value when labeling, which will affect our labeling and needs to be canceled.<br>
 
-我尝试了很多次，想在生成via标注文件时，去掉标注选项中的默认值，但还是没有实现，那就在生成之后，直接对via的json文件进行操作，去掉默认值。<br>
+我嘗試了很多次，想在產生via標註檔時，去掉標註選項中的預設值，但還是沒有實現，那就在生成之後，直接對via的json檔進行操作，去掉預設值。<br>
 I have tried many times and want to remove the default value in the annotation option when generating the via annotation file, but it is still not implemented. Then after the generation, directly operate the via json file and remove the default value.<br>
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/:<br>
-在：C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset下运行<br>
+在：C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset下運行<br>
 
 ```python
 cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows\Dataset
@@ -196,10 +197,10 @@ python chang_via_json.py
 
 ## 7.5 Download choose_frames_middle and VIA annotation 下载choose_frames_middle与VIA标注
 Compress the choose_frames_middle file<br>
-对choose_frames_middle文件压缩<br>
+對choose_frames_middle文件壓縮，這部分是配合上傳到雲端平台，如果是在本地端可以不用做<br>
 
 Execute the code under /home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset: <br>
-在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset中执行：<br>
+在/home/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset/Dataset中執行：<br>
 
 ```python
 apt-get update
@@ -210,24 +211,24 @@ cd C:\Users\jason\Desktop\Custom-ava-dataset_Custom-Spatio-Temporally-Action-Vid
 zip -r choose_frames_middle.zip choose_frames_middle
 ```
 Download choose_frames_middle.zip<br>
-下载：choose_frames_middle.zip<br>
+下載：choose_frames_middle.zip<br>
 
 Then use via to label<br>
-然后使用via进行标注<br>
+然后使用via進行標註<br>
 
 via official website:[https://www.robots.ox.ac.uk/~vgg/software/via/](https://www.robots.ox.ac.uk/~vgg/software/via/)<br>
 via官网：[https://www.robots.ox.ac.uk/~vgg/software/via/](https://www.robots.ox.ac.uk/~vgg/software/via/)<br>
 
 via annotation tool download link: [https://www.robots.ox.ac.uk/~vgg/software/via/downloads/via3/via-3.0.11.zip](https://www.robots.ox.ac.uk/~vgg/software/via/downloads/via3/via-3.0.11.zip)<br>
-via标注工具下载链接：[https://www.robots.ox.ac.uk/~vgg/software/via/downloads/via3/via-3.0.11.zip](https://www.robots.ox.ac.uk/~vgg/software/via/downloads/via3/via-3.0.11.zip)<br>
+via標註工具下載連結：[https://www.robots.ox.ac.uk/~vgg/software/via/downloads/via3/via-3.0.11.zip](https://www.robots.ox.ac.uk/~vgg/software/via/downloads/via3/via-3.0.11.zip)<br>
 
 Click in the annotation tool: via_image_annotator.html<br>
-点击标注工具中的： via_image_annotator.html<br>
+點選標註工具中的： via_image_annotator.html<br>
 
 ![image](https://img-blog.csdnimg.cn/fec0e87d18ab48c2af8299791a1e71af.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_18,color_FFFFFF,t_70,g_se,x_16)
 
 The following picture is the interface of via, 1 represents adding pictures, 2 represents adding annotation files <br>
-下图是via的界面，1代表添加图片，2代表添加标注文件<br>
+下圖是via的介面，1代表添加圖片，2代表添加標註文件<br>
 
 ![image](https://img-blog.csdnimg.cn/6c896dd36f284f2286867510c705a7de.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_20,color_FFFFFF,t_70,g_se,x_16)
 
@@ -237,18 +238,18 @@ Import the image, open the annotation file (note, open x_proposal_s.json), the f
 
 # 8 Extraction of via annotation information. via标注信息的提取
 After action annotation, the annotation information of via is saved as a json file. The json file contains: the name of the video, the number of the video frame, the boundding box of the human, and the number of the action category.<br>
-经过动作标注，via的标注信息保存为json文件，json文件中包含：视频的名字、视频帧的编号、人的坐标值、动作类别编号<br>
+經過動作標註，via的標註資訊儲存為json文件，json文件中包含：影片的名字、影片畫面的編號、人的座標值、動作類別編號<br>
 
 These information are required for the annotation file, and the information in the json file needs to be integrated. This section is to integrate the information in the via.<br>
-这些信息都是标注文件所需要的，需要把json文件中的信息整合，这一节就是对via中信息做整合。<br>
+這些資訊都是標註文件所需要的，需要把json文件中的信息整合，這一節就是對via中信息做整合。<br>
 
 ## 8.1 ava_train
 The following figure is the ava annotation file (ava_train.csv)<br>
-下图是ava标注文件（ava_train.csv）<br>
+下圖是ava標註文件（ava_train.csv）<br>
 
 ![image](https://img-blog.csdnimg.cn/0af268f7e8a94fda87dfc75797ee38da.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_20,color_FFFFFF,t_70,g_se,x_16)
 Column 1: The name of the video<br>
-第一列：视频的名字<br>
+第一列：影片的名字<br>
 
 Column 2: the video frame ID, for example, the frame at 15:02 is expressed as 902, and the frame at 15:03 is expressed as 903<br>
 第二列：视频帧ID，比如15:02这一帧，表示为902，15:03这一帧表示为903<br>
@@ -645,9 +646,9 @@ The weights after training are:<br>
 训练后的权重在：home/mmaction2/work_dirs/ava/slowfast_kinetics_pretrained_r50_4x16x1_20e_ava_rgb：<br>
 ![image](https://img-blog.csdnimg.cn/296943c198974c27ae1338bc28647663.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAQ1Yt5p2o5biG,size_20,color_FFFFFF,t_70,g_se,x_16)
 
-## 15.3 Test 测试
+## 15.3 Test 測試
 First, create a new label_map<br>
-首先，创建新的label_map<br>
+首先，創建新的label_map<br>
 
 ```python
 cd /home/mmaction2_YF/tools/data/ava
