@@ -32,7 +32,7 @@ Instance mirroring selection：Pytorch 1.8.0，python 3.8，CUDA 11.1.1 <br>
 
 ## 2.2 project download. AI平台與項目下載
 為了讓項目快速下載，我將項目同步到了碼雲：[https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git](https://gitee.com/YFwinston/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset.git)
-```python
+```
 cd /home
 git clone https://github.com/JasonHuang0119/Custom-ava-dataset_Custom-Spatio-Temporally-Action-Video-Dataset-Windows.git
 
